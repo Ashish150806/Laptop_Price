@@ -1,6 +1,9 @@
+import os
 import streamlit as st
 import pickle
 import numpy as np
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- Page config ---
 st.set_page_config(page_title="Laptop Price Predictor", page_icon="💻", layout="centered")
@@ -96,8 +99,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Load model ---
-pipe = pickle.load(open('models/pipe.pkl', 'rb'))
-df = pickle.load(open('models/df.pkl', 'rb'))
+pipe = pickle.load(open(os.path.join(BASE_DIR, 'models', 'pipe.pkl'), 'rb'))
+df = pickle.load(open(os.path.join(BASE_DIR, 'models', 'df.pkl'), 'rb'))
 
 # --- Header ---
 st.title("Laptop Price Predictor")
